@@ -3,6 +3,9 @@ import type { CSSProperties } from "react";
 import NotesApp from "../assets/images/Notes-app.png";
 import Pizza from "../assets/images/Pizza.png";
 import blog from "../assets/images/project_3.png";
+import MovieApp from "../assets/images/movie .png";
+// Quyidagi rasmlarni o'z papkangizga joylab, nomlarini to'g'rilang:
+import LuxeCutsImg from "../assets/images/tanlang.png";
 
 interface Project {
   title: string;
@@ -26,7 +29,7 @@ const projects: Project[] = [
   {
     title: "Smart Notes",
     image: NotesApp,
-    live: "http://localhost:5177/",
+    live: "https://notes-item.vercel.app/",
     status: "Active",
     tags: ["React", "Context API", "Framer Motion"],
     description:
@@ -35,11 +38,29 @@ const projects: Project[] = [
   {
     title: "Personal Blog",
     image: blog,
-    live: "http://localhost:3000/",
+    live: "https://maqola-sayt.vercel.app/blog",
     status: "Active",
     tags: ["Next.js", "TypeScript", "Sanity"],
     description:
       "✍️ Personal Blog – Next.js va Sanity CMS yordamida qurilgan zamonaviy blog platformasi. SEO optimizatsiya qilingan.",
+  },
+  {
+    title: "Movie App",
+    image: MovieApp,
+    live: "https://movie-app-one-pink.vercel.app/",
+    status: "Active",
+    tags: ["React", "API", "Movies"],
+    description:
+      "O'zingizga yoqadigan Filmlarni Qiyinchiliksiz toping! Ushbu ilova orqali filmlar haqida ma'lumot olishingiz mumkin.",
+  },
+  {
+    title: "Luxe Cuts",
+    image: LuxeCutsImg,
+    live: "http://localhost:3000/",
+    status: "Active",
+    tags: ["Barbershop", "Premium", "Service"],
+    description:
+      "Sizning uslubingiz — bu sizning merosingiz. Professional sartaroshlar va premium darajadagi xizmat.",
   },
 ];
 
@@ -212,6 +233,7 @@ const Loyihalar = () => {
   );
 };
 
+// Styles
 const containerStyle: CSSProperties = {
   width: "100%",
   minHeight: "100vh",
