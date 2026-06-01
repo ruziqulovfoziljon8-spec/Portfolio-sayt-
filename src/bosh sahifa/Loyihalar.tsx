@@ -51,7 +51,7 @@ const projects: Project[] = [
     status: "Active",
     tags: ["React", "API", "Movies"],
     description:
-      "O'zingizga yoqadigan Filmlarni Qiyinchiliksiz toping! Ushbu ilova orqali filmlar haqida ma'lumot olishingiz mumkin.",
+      "🎬O'zingizga yoqadigan Filmlarni Qiyinchiliksiz toping! Ushbu ilova orqali filmlar haqida ma'lumot olishingiz mumkin.",
   },
   {
     title: "Barber Master",
@@ -140,71 +140,86 @@ const Loyihalar = () => {
           />
         </div>
 
-        <div className="projects-grid">
-          {filteredProjects.map((project, index) => (
-            <div key={index} style={cardStyle} className="project-card">
-              <div
-                className="project-img-wrapper"
-                style={{
-                  ...imageWrapperStyle,
-                  backgroundImage: `url(${project.image})`,
-                }}
-              >
-                <div style={actionButtonsStyle}>
-                  <div
-                    onClick={() => setSelectedProject(project)}
-                    className="icon-box"
-                    style={iconBoxStyle}
-                  >
-                    👁️
-                  </div>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="icon-box"
-                    style={iconBoxStyle}
-                  >
-                    🔗
-                  </a>
-                </div>
-              </div>
-
-              <div style={infoSectionStyle}>
+        {filteredProjects.length > 0 ? (
+          <div className="projects-grid">
+            {filteredProjects.map((project, index) => (
+              <div key={index} style={cardStyle} className="project-card">
                 <div
+                  className="project-img-wrapper"
                   style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    ...imageWrapperStyle,
+                    backgroundImage: `url(${project.image})`,
                   }}
                 >
-                  <h3 style={projectTitleStyle} className="project-title">
-                    {project.title}
-                  </h3>
-                  <div style={statusWrapperStyle}>
-                    <span style={statusDotStyle}></span>
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        color: "#39965F",
-                        fontWeight: "700",
-                      }}
+                  <div style={actionButtonsStyle}>
+                    <div
+                      onClick={() => setSelectedProject(project)}
+                      className="icon-box"
+                      style={iconBoxStyle}
                     >
-                      ACTIVE
-                    </span>
+                      👁️
+                    </div>
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="icon-box"
+                      style={iconBoxStyle}
+                    >
+                      🔗
+                    </a>
                   </div>
                 </div>
-                <div style={tagsWrapperStyle}>
-                  {project.tags.map((tag, i) => (
-                    <span key={i} style={tagStyle}>
-                      #{tag}
-                    </span>
-                  ))}
+
+                <div style={infoSectionStyle}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <h3 style={projectTitleStyle} className="project-title">
+                      {project.title}
+                    </h3>
+                    <div style={statusWrapperStyle}>
+                      <span style={statusDotStyle}></span>
+                      <span
+                        style={{
+                          fontSize: "11px",
+                          color: "#39965F",
+                          fontWeight: "700",
+                        }}
+                      >
+                        ACTIVE
+                      </span>
+                    </div>
+                  </div>
+                  <div style={tagsWrapperStyle}>
+                    {project.tags.map((tag, i) => (
+                      <span key={i} style={tagStyle}>
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div style={notFoundContainerStyle}>
+            <div style={notFoundIconStyle}>📭</div>
+            <h3 style={notFoundTitleStyle}>Bunday ma'lumot mavjud emas</h3>
+            <p style={notFoundDescStyle}>
+              Kechirasiz, "
+              <span style={{ color: "#39965F", fontWeight: "600" }}>
+                {search}
+              </span>
+              " kalit so'zi bo'yicha hech qanday loyiha yoki texnologiya
+              topilmadi.
+            </p>
+          </div>
+        )}
       </div>
 
       {selectedProject && (
@@ -242,7 +257,6 @@ const Loyihalar = () => {
   );
 };
 
-// Styles
 const containerStyle: CSSProperties = {
   width: "100%",
   minHeight: "100vh",
@@ -388,6 +402,37 @@ const modalDescStyle: CSSProperties = {
   fontSize: "16px",
   lineHeight: "1.6",
   margin: 0,
+};
+
+const notFoundContainerStyle: CSSProperties = {
+  textAlign: "center",
+  padding: "80px 20px",
+  border: "1px dashed #222",
+  borderRadius: "20px",
+  backgroundColor: "#0d0d0d",
+  marginTop: "20px",
+};
+
+const notFoundIconStyle: CSSProperties = {
+  fontSize: "4rem",
+  marginBottom: "15px",
+  animation: "pulse 2s infinite",
+};
+
+const notFoundTitleStyle: CSSProperties = {
+  fontSize: "1.6rem",
+  fontWeight: "700",
+  margin: "0 0 12px 0",
+  color: "#fff",
+  letterSpacing: "0.5px",
+};
+
+const notFoundDescStyle: CSSProperties = {
+  fontSize: "0.95rem",
+  color: "#666",
+  maxWidth: "450px",
+  margin: "0 auto",
+  lineHeight: "1.6",
 };
 
 export default Loyihalar;

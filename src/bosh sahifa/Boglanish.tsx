@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import frame1 from "../assets/images/Frame1.png";
 import frame3 from "../assets/images/Frame3.png";
@@ -11,15 +11,16 @@ interface SectionTitleProps {
 export default function Boglanish() {
   const [isSent, setIsSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    
     const formData = new FormData(e.currentTarget);
-
-    formData.append("access_key", "9efca146-4f86-4c88-b67c-5ba42e2d5e35");
+    formData.append("access_key", "c86cdf5b-4130-4d93-98fe-3fcc76bd5f51");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -31,19 +32,33 @@ export default function Boglanish() {
 
       if (data.success) {
         setIsSent(true);
+        setName("");
+        setEmail("");
+        setMessage("");
         e.currentTarget.reset();
-        setTimeout(() => {
-          setIsSent(false);
-        }, 5000);
       } else {
         alert("Xatolik yuz berdi: " + data.message);
       }
     } catch (error) {
-      alert("Tarmoqda xatolik!");
+      console.error("Tarmoq xatosi:", error);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!isSent) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setIsSent(false);
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [isSent]);
 
   const SectionTitle = ({ title }: SectionTitleProps) => (
     <div style={{ marginBottom: "35px" }}>
@@ -73,7 +88,7 @@ export default function Boglanish() {
             img: frame1,
             title: "E-pochta",
             link: "mailto:ruziqulovfoziljon8@gmail.com",
-            text: "ruziqulovfoziljon8@gmail.com",
+            text: "fozilroziqulov@gmail.com",
           },
           {
             img: frame3,
@@ -136,6 +151,8 @@ export default function Boglanish() {
                 type="text"
                 placeholder="Ismingizni kiriting"
                 className="custom-input"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="input-group">
@@ -146,6 +163,8 @@ export default function Boglanish() {
                 type="email"
                 placeholder="Email@example.com"
                 className="custom-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -159,6 +178,8 @@ export default function Boglanish() {
               placeholder="Xabarlaringizni shu yerga yozing..."
               className="custom-input"
               style={{ resize: "none" }}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             ></textarea>
           </div>
 
@@ -233,4 +254,3 @@ export default function Boglanish() {
     </div>
   );
 }
-

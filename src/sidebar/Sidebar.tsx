@@ -160,8 +160,8 @@ export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
           <ContactItem
             icon={frame1}
             label="Email"
-            value="foziljon@gmail.com"
-            link="mailto:ruziqulovfoziljon8@gmail.com"
+            value="fozilroziqulov@gmail.com"
+            link="mailto:fozilroziqulov@gmail.com"
           />
           <ContactItem
             icon={frame2}
