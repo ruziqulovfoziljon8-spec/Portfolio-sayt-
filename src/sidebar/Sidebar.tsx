@@ -2,7 +2,7 @@ import frame1 from "../assets/images/Frame1.png";
 import frame2 from "../assets/images/Frame2.png";
 import frame3 from "../assets/images/Frame3.png";
 import frame4 from "../assets/images/Frame4.png";
-import ozim from "../assets/images/ozim.png";
+import ozim from "../assets/images/Ozimm-img.png";
 
 type SidebarProps = {
   isOpen: boolean;
@@ -123,7 +123,7 @@ export default function Sidebar({ isOpen, toggleSidebar }: SidebarProps) {
               margin: 0,
             }}
           >
-            Fullstack Developer
+            FRONTEND DEVELOPER
           </p>
         </div>
 

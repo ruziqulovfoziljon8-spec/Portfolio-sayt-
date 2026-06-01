@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
-import NotesApp from "../assets/images/Notes-app.png";
-import Pizza from "../assets/images/Pizza.png";
-import blog from "../assets/images/project_3.png";
-import MovieApp from "../assets/images/movie .png";
-// Quyidagi rasmlarni o'z papkangizga joylab, nomlarini to'g'rilang:
-import LuxeCutsImg from "../assets/images/tanlang.png";
+import NotesApp from "../assets/images/notes 1.png";
+import Pizza from "../assets/images/pizza1.png";
+import blog from "../assets/images/blog1.png";
+import MovieApp from "../assets/images/movie1.png";
+import barber from "../assets/images/barber1.png";
+import service from "../assets/images/service1.png";
 
 interface Project {
   title: string;
@@ -20,7 +20,7 @@ const projects: Project[] = [
   {
     title: "Pizza Delivery",
     image: Pizza,
-    live: "http://localhost:5176/",
+    live: "https://pizza-project-six-ashy.vercel.app/",
     status: "Active",
     tags: ["Vite", "TailwindCSS", "ReactJS", "Redux"],
     description:
@@ -54,13 +54,22 @@ const projects: Project[] = [
       "O'zingizga yoqadigan Filmlarni Qiyinchiliksiz toping! Ushbu ilova orqali filmlar haqida ma'lumot olishingiz mumkin.",
   },
   {
-    title: "Luxe Cuts",
-    image: LuxeCutsImg,
-    live: "http://localhost:3000/",
+    title: "Barber Master",
+    image: barber,
+    live: "https://barber-shop-beta-coral.vercel.app/",
     status: "Active",
-    tags: ["Barbershop", "Premium", "Service"],
+    tags: ["TailwindCSS", "Barber", "Booking"],
     description:
-      "Sizning uslubingiz — bu sizning merosingiz. Professional sartaroshlar va premium darajadagi xizmat.",
+      "💈 Barber Master – Onlayn navbat olish va sartaroshlar xizmatidan foydalanish uchun qulay platforma.",
+  },
+  {
+    title: "Premium Service",
+    image: service,
+    live: "https://avto-service-pi.vercel.app/",
+    status: "Active",
+    tags: ["React", "Services", "UI/UX"],
+    description:
+      "⚙️ Premium Service – Mijozlarga yuqori sifatli xizmat ko'rsatish va buyurtmalarni boshqarish tizimi.",
   },
 ];
 
